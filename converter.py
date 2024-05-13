@@ -30,7 +30,7 @@ def main():
     parser = argparse.ArgumentParser(description='Converte arquivos de áudio de uma pasta de entrada para um formato especificado e os salva em uma pasta de saída, mantendo a estrutura de diretórios.')
     parser.add_argument('-i', '--input_folder', default='input', help='Nome da pasta de entrada onde estão os arquivos de áudio. Padrão é "input".')
     parser.add_argument('-o', '--output_folder', default='output', help='Nome da pasta de saída para os arquivos convertidos. Padrão é "output".')
-    parser.add_argument('-f', '--format', required=True, choices=['mp3', 'wav', 'ogg', 'flac', 'aac', 'wma', 'mp4'], help='Formato de destino para a conversão dos arquivos de áudio.')
+    parser.add_argument('-f', '--format', default='wav', choices=['mp3', 'wav', 'ogg', 'flac', 'aac', 'wma', 'mp4'], help='Formato de destino para a conversão dos arquivos de áudio. Padrão .wav')
     args = parser.parse_args()
 
     # Verificar e criar as pastas de entrada e saída, se necessário
