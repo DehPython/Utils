@@ -2,20 +2,6 @@ import os
 import argparse
 from pydub import AudioSegment
 
-def main():
-    # Configuração do argparse
-    parser = argparse.ArgumentParser(description='Converte arquivos de áudio de uma pasta de entrada para um formato especificado e os salva em uma pasta de saída, mantendo a estrutura de diretórios.')
-    parser.add_argument('-i', '--input_folder', default='input', help='Nome da pasta de entrada onde estão os arquivos de áudio. Padrão é "input".')
-    parser.add_argument('-o', '--output_folder', default='output', help='Nome da pasta de saída para os arquivos convertidos. Padrão é "output".')
-    parser.add_argument('-f', '--format', required=True, choices=['mp3', 'wav', 'ogg', 'flac', 'aac', 'wma', 'mp4'], help='Formato de destino para a conversão dos arquivos de áudio.')
-    args = parser.parse_args()
-
-    # Verificar e criar as pastas de entrada e saída, se necessário
-    if not os.path.exists(args.input_folder):
-        os.makedirs(args.input_folder)
-    if not os.path.exists(args.output_folder):
-        os.makedirs(args.output_folder)
-
     # Função para converter os arquivos
     def converter_arquivo_audio(caminho_origem, caminho_destino, formato_destino):
         try:
@@ -37,6 +23,21 @@ def main():
 
     # Iniciar a conversão
     percorrer_e_converter(args.input_folder, args.format, args.input_folder, args.output_folder)
+
+
+def main():
+    # Configuração do argparse
+    parser = argparse.ArgumentParser(description='Converte arquivos de áudio de uma pasta de entrada para um formato especificado e os salva em uma pasta de saída, mantendo a estrutura de diretórios.')
+    parser.add_argument('-i', '--input_folder', default='input', help='Nome da pasta de entrada onde estão os arquivos de áudio. Padrão é "input".')
+    parser.add_argument('-o', '--output_folder', default='output', help='Nome da pasta de saída para os arquivos convertidos. Padrão é "output".')
+    parser.add_argument('-f', '--format', required=True, choices=['mp3', 'wav', 'ogg', 'flac', 'aac', 'wma', 'mp4'], help='Formato de destino para a conversão dos arquivos de áudio.')
+    args = parser.parse_args()
+
+    # Verificar e criar as pastas de entrada e saída, se necessário
+    if not os.path.exists(args.input_folder):
+        os.makedirs(args.input_folder)
+    if not os.path.exists(args.output_folder):
+        os.makedirs(args.output_folder)
 
 if __name__ == "__main__":
     main()
